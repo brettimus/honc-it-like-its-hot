@@ -3,11 +3,11 @@
   "scripts": {
     "dev": "wrangler dev src/index.ts",
     "deploy": "wrangler deploy --minify src/index.ts",
-    "db:touch": "wrangler d1 execute d1-database --local --command='SELECT 1'",
+    "db:touch": "wrangler d1 execute honc-d1-database --local --command='SELECT 1'",
     "db:generate": "drizzle-kit generate",
-    "db:migrate": "wrangler d1 migrations apply d1-database --local",
+    "db:migrate": "wrangler d1 migrations apply honc-d1-database --local",
     "db:migrate:prod": "ENVIROMENT=production drizzle-kit migrate",
-    "db:seed": "tsx client.ts",
+    "db:seed": "tsx seed.ts",
     "db:setup": "npm run db:touch && npm run db:generate && npm run db:migrate && npm run db:seed",
     "fiberplane-studio": "fpx"
   },
