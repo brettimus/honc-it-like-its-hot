@@ -1,23 +1,30 @@
 ## 🪿 Goose Joke Generator
 
-This is a project created with the `create-honc-app` template.
+This is a project created with the Neon HONC template.
 
 It is a simple Goose Joke Generator that uses Cloudflare AI to generate jokes, and store them in a Neon Postgres database.
 
-The jokes are very bad.
+The jokes are of a particularly poor quality.
 
 ### Getting started
 
-Make sure you have Neon set up and configured with your database. Create a .dev.vars file with your Neon connection string as the `DATABASE_URL` key and value (see: `.dev.vars.example`).
+Make sure you have Neon set up and the api is configured to use your database. 
+
+To do this, create a `.dev.vars` file with your Neon connection string as the `DATABASE_URL` key and value (see: `.dev.vars.example`).
+
+Also make sure you are logged in to Cloudflare and have access to Workers AI.
+
+Then, run `pnpm dev` to kick off the app locally.
 
 ### Project structure
 
 ```#
 ├── src
 │   ├── index.tsx # Hono app entry point
+│   ├── HomePage.tsx # Extremely good looking home page
 │   └── db
 │       └── schema.ts # Database schema
-├── seed.ts # Optional seeding script
+├── seed.ts # Seeding script
 ├── .dev.vars.example # Example .dev.vars file
 ├── wrangler.toml # Cloudflare Workers configuration
 ├── drizzle.config.ts # Drizzle configuration
@@ -41,13 +48,15 @@ Run the development server:
 pnpm dev
 ```
 
-Debug with Fiberplane:
+Test and debug with Fiberplane:
 
 ```sh
 pnpm fiberplane
 ```
 
-### Deploying
+### Deploying to Cloudflare
+
+> **Remember this uses some AI!** So you will be billed for any newly generated goose jokes.
 
 Deploy with Cloudflare Wrangler.
 
@@ -62,3 +71,4 @@ Then deploy:
 ```sh
 pnpm run deploy
 ```
+
