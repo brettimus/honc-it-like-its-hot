@@ -1,5 +1,5 @@
 {
-  "name": "hono-neon-drizzle-template",
+  "name": "hono-supabase-drizzle-template",
   "scripts": {
     "dev": "wrangler dev src/index.ts",
     "deploy": "wrangler deploy --minify src/index.ts",
@@ -21,6 +21,7 @@
     "@fiberplane/studio": "^0.8.4",
     "drizzle-kit": "^0.22.6",
     "tsx": "^4.11.0",
+    "typescript": "^5.5.4",
     "wrangler": "^3.47.0"
   }
 }
