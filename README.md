@@ -24,7 +24,15 @@ Accessible via the [Create HONC App](https://github.com/fiberplane/create-honc-a
 
 Example applications built with the HONC stack that you could deploy to Cloudflare. Each example's README will explain why it was set up that way, as well as giving instructions on how to deploy.
 
-## Recipes
+### [Goose Joke Generator](./examples/goose-joke-generator)
+
+A simple goose joke generator api and frontend built with HONC.
+
+- Cloudflare AI to generate jokes
+- Neon to persist goose jokes
+- Hono JSX for server-side rendering of the home page
+
+<!-- ## Recipes
 
 Recipes for common use cases for data apis, including:
 
@@ -32,4 +40,4 @@ Recipes for common use cases for data apis, including:
 - [Rate Limiting](./recipes/rate-limiting)
 - [R2 Object Storage](./recipes/r2-object-storage)
 - [WebSockets with Durable Objects](./recipes/durable-objects)
-- [Scheduled Jobs](./recipes/scheduled-jobs)
+- [Scheduled Jobs](./recipes/scheduled-jobs) -->
