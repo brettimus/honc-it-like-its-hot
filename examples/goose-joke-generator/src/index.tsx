@@ -11,6 +11,7 @@ import type { Bindings } from "./types";
 
 const app = new Hono<{ Bindings: Bindings }>();
 
+// Add a rate limiter to the api since we're handing out all that free AI
 app.use(gooseJokesRateLimiter);
 
 app.get("/", async (c) => {
@@ -46,6 +47,14 @@ app.get("/api/jokes", async (c) => {
   });
 });
 
+/**
+ * Generates a new goose joke and inserts it into the database.
+ *
+ * You can quickly test joke generation and iterate the prompt while working in Fiberplane Studio.
+ *
+ * @param c - The Hono context
+ * @returns A Promise that resolves to a JSON object containing the new joke
+ */
 app.post("/api/generate-joke", async (c) => {
   const ai = c.env.AI;
   const sql = neon(c.env.DATABASE_URL);
