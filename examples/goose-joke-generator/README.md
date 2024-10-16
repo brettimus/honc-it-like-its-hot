@@ -63,7 +63,7 @@ Deploy with Cloudflare Wrangler.
 First set the DATABASE_URL as a secret:
 
 ```sh
-npx wrangler secret put DATABASE_URL
+pnpx wrangler secret put DATABASE_URL
 ```
 
 Then deploy:

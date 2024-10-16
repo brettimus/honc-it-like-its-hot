@@ -4,7 +4,7 @@
 </div>
 
 <p align="center">
-    Recipe book for creating modular data APIs using TypeScript and the [HONC stack](https://honc.dev)
+    Recipe book for creating modular data APIs using TypeScript and the HONC stack
 </p>
 
 [HONC](https://honc.dev) is a modular collection of choice technologies for building lightweight, type-safe, edge-enabled data apis that scale seamlessly to their demand.
