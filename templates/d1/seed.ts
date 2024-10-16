@@ -1,3 +1,9 @@
+import fs from "node:fs";
+import path from "node:path";
+import { createClient } from "@libsql/client";
+import { drizzle } from "drizzle-orm/libsql";
+import * as schema from "./src/db/schema";
+
 interface User {
   name: string;
   email: string;
@@ -10,31 +16,49 @@ const seedData: User[] = [
 ];
 
 const seedDatabase = async () => {
+  const pathToDb = getLocalD1DB();
+  const client = createClient({
+    url: `file:${pathToDb}`,
+  });
+  const db = drizzle(client);
+  console.log("Seeding database...");
   try {
-    for (const user of seedData) {
-      const response = await fetch("http://localhost:8787/api/user", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(user),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to insert user: ${response.statusText}");
-      }
-
-      const data = await response.text();
-
-      console.log(`User inserted: ${data}`);
-    }
-
-    console.log("Database seeded successfully");
+    await db.insert(schema.users).values(seedData);
+    console.log("Database seeded successfully!");
   } catch (error) {
-    if (error instanceof Error) {
-      console.error("Error: ", error.message);
-    } else {
-      console.error("Unknown error occurred:", error);
-    }
+    console.error("Error seeding database:", error);
   }
 };
 
 seedDatabase();
+
+function getLocalD1DB() {
+  try {
+    const basePath = path.resolve(".wrangler");
+    const files = fs
+      .readdirSync(basePath, { encoding: "utf-8", recursive: true })
+      .filter((f) => f.endsWith(".sqlite"));
+
+    // In case there are multiple .sqlite files, we want the most recent one.
+    files.sort((a, b) => {
+      const statA = fs.statSync(path.join(basePath, a));
+      const statB = fs.statSync(path.join(basePath, b));
+      return statB.mtime.getTime() - statA.mtime.getTime();
+    });
+    const dbFile = files[0];
+
+    if (!dbFile) {
+      throw new Error(`.sqlite file not found in ${basePath}`);
+    }
+
+    const url = path.resolve(basePath, dbFile);
+
+    return url;
+  } catch (err) {
+    if (err instanceof Error) {
+      console.log(`Error resolving local D1 DB: ${err.message}`);
+    } else {
+      console.log(`Error resolving local D1 DB: ${err}`);
+    }
+  }
+}
