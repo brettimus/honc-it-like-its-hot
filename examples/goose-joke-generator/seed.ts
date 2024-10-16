@@ -12,10 +12,12 @@ const db = drizzle(sql);
 async function seed() {
   await db.insert(jokes).values([
     {
-      content: "Why don't geese like people? They're always giving them the cold shoulder!",
+      content:
+        "Why don't geese like people? They're always giving them the cold shoulder!",
     },
     {
-      content: "What do you call a goose that's always complaining? A grumpy gander!",
+      content:
+        "What do you call a goose that's always complaining? A grumpy gander!",
     },
     {
       content: "How do geese like their eggs? Goose-side up!",

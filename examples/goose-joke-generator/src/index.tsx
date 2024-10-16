@@ -1,10 +1,10 @@
 import { instrument } from "@fiberplane/hono-otel";
 import { neon } from "@neondatabase/serverless";
-import { drizzle, type NeonHttpDatabase } from "drizzle-orm/neon-http";
+import { count, desc } from "drizzle-orm";
+import { type NeonHttpDatabase, drizzle } from "drizzle-orm/neon-http";
 import { Hono } from "hono";
-import { jokes } from "./db/schema";
-import { desc, count } from "drizzle-orm";
 import { HomePage } from "./HomePage";
+import { jokes } from "./db/schema";
 
 type Bindings = {
   DATABASE_URL: string;
@@ -28,14 +28,12 @@ app.get("/", async (c) => {
     joke = await getRandomJoke(db, c.env.AI);
   }
 
-  return c.html(
-    <HomePage joke={joke} />
-  );
+  return c.html(<HomePage joke={joke} />);
 });
 
 /**
  * Retrieves all jokes from the database
- * 
+ *
  * @param db - The drizzle neon wrapper
  * @returns A Promise that resolves to an array of jokes
  */
@@ -56,14 +54,20 @@ app.post("/api/generate-joke", async (c) => {
   const joke = await generateGooseJoke(db, ai);
 
   if (!joke) {
-    return c.json({
-      error: "No joke generated",
-    }, 500);
+    return c.json(
+      {
+        error: "No joke generated",
+      },
+      500,
+    );
   }
 
-  const [newJoke] = await db.insert(jokes).values({
-    content: joke,
-  }).returning();
+  const [newJoke] = await db
+    .insert(jokes)
+    .values({
+      content: joke,
+    })
+    .returning();
 
   return c.json({
     joke: newJoke,
@@ -72,17 +76,18 @@ app.post("/api/generate-joke", async (c) => {
 
 export default instrument(app);
 
-
 /**
  * Retrieves a random joke from the database or generates a new one if there are fewer than 50 jokes.
- * 
+ *
  * @param db - The database connection object
  * @param ai - The AI object used for generating new jokes
  * @returns A Promise that resolves to a string containing the joke
  */
 async function getRandomJoke(db: NeonHttpDatabase, ai: Ai): Promise<string> {
   // Get the total count of jokes in the database
-  const [{ count: jokeCount }] = await db.select({ count: count() }).from(jokes);
+  const [{ count: jokeCount }] = await db
+    .select({ count: count() })
+    .from(jokes);
 
   // If there are fewer than 50 jokes, generate a new one instead
   if (jokeCount < 50) {
@@ -105,16 +110,23 @@ async function getRandomJoke(db: NeonHttpDatabase, ai: Ai): Promise<string> {
 
 /**
  * Generates a new goose joke using AI
- * 
+ *
  * @param db - The drizzle neon wrapper
  * @param ai - Cloudflare AI binding
  * @returns A Promise that resolves to a string containing the generated goose joke
  */
-async function generateGooseJoke(db: NeonHttpDatabase, ai: Ai): Promise<string> {
+async function generateGooseJoke(
+  db: NeonHttpDatabase,
+  ai: Ai,
+): Promise<string> {
   // Fetch the 5 most recent jokes
-  const recentJokes = await db.select().from(jokes).orderBy(desc(jokes.createdAt)).limit(5);
+  const recentJokes = await db
+    .select()
+    .from(jokes)
+    .orderBy(desc(jokes.createdAt))
+    .limit(5);
 
-  const recentJokesContent = recentJokes.map(joke => joke.content).join('\n');
+  const recentJokesContent = recentJokes.map((joke) => joke.content).join("\n");
 
   const systemPrompt = `
     You are an kitschy stand-up comedian.
@@ -135,13 +147,16 @@ async function generateGooseJoke(db: NeonHttpDatabase, ai: Ai): Promise<string> 
     Do not repeat any of these recent jokes or puns:\n${recentJokesContent}
   `.trim();
 
-  const response: AiTextGenerationOutput = await ai.run("@cf/meta/llama-3.1-8b-instruct-fast" as BaseAiTextGenerationModels, {
-    messages: [
-      { role: "system", content: systemPrompt },
-      { role: "user", content: userPrompt }
-    ],
-    temperature: 0.72,
-  });
+  const response: AiTextGenerationOutput = await ai.run(
+    "@cf/meta/llama-3.1-8b-instruct-fast" as BaseAiTextGenerationModels,
+    {
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: userPrompt },
+      ],
+      temperature: 0.72,
+    },
+  );
 
   let joke = "";
   if (response instanceof ReadableStream) {

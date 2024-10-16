@@ -6,8 +6,9 @@ export const HomePage: FC<{ joke: string }> = ({ joke }) => {
       <head>
         <title>Goose Joke Generator</title>
         {/* biome-ignore lint/security/noDangerouslySetInnerHtml: we do not want quotes to be escaped */}
-        <style dangerouslySetInnerHTML={{
-          __html: `
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
           body {
             font-family: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
             background-color: #ffffcc;
@@ -46,20 +47,26 @@ export const HomePage: FC<{ joke: string }> = ({ joke }) => {
           .refresh-btn:hover {
             background-color: #ff8533;
           }
-        `}} />
+        `,
+          }}
+        />
       </head>
       <body>
         <h1>🦢 Goose Joke Generator 🦢</h1>
         <div class="joke-container">
-          <p class="joke">{joke.split('\n').map((line, index) => (
-            // biome-ignore lint/suspicious/noArrayIndexKey: this is not react
-            <span key={index}>
-              {index > 0 && <br />}
-              {line}
-            </span>
-          ))}</p>
+          <p class="joke">
+            {joke.split("\n").map((line, index) => (
+              // biome-ignore lint/suspicious/noArrayIndexKey: this is not react
+              <span key={index}>
+                {index > 0 && <br />}
+                {line}
+              </span>
+            ))}
+          </p>
         </div>
-        <button class="refresh-btn" type="submit" onclick="location.reload()">More Joke!</button>
+        <button class="refresh-btn" type="submit" onclick="location.reload()">
+          More Joke!
+        </button>
       </body>
     </html>
   );
