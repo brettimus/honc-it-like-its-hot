@@ -31,6 +31,8 @@ A simple goose joke generator api and frontend built with HONC.
 - Cloudflare AI to generate jokes
 - Neon to persist goose jokes
 - Hono JSX for server-side rendering of the home page
+- Hono Rate Limiter with Cloudflare Key Value Store for rate limiting requests
+- Fiberplane Studio for debugging and iterating on the api
 
 <!-- ## Recipes
 

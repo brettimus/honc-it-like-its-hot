@@ -22,6 +22,7 @@ Then, run `pnpm dev` to kick off the app locally.
 ├── src
 │   ├── index.tsx # Hono app entry point
 │   ├── HomePage.tsx # Extremely good looking home page
+│   ├── rate-limiter.ts # Rate limiter middleware
 │   └── db
 │       └── schema.ts # Database schema
 ├── seed.ts # Seeding script
@@ -39,7 +40,7 @@ Run the migrations and (optionally) seed the database:
 ```sh
 pnpm run db:generate
 pnpm run db:migrate
-pnpm run db:seed # Optional
+pnpm run db:seed
 ```
 
 Run the development server:
@@ -67,7 +68,7 @@ pnpx wrangler secret put DATABASE_URL
 # when prompted, enter your Neon connection string
 ```
 
-Then, create the KV binding on your account:
+Then, create the KV binding on your account, since we use that for the rate limiter:
 
 ```sh
 pnpx wrangler kv namespace create GOOSE_JOKES_CACHE
