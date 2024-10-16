@@ -64,6 +64,21 @@ First set the DATABASE_URL as a secret:
 
 ```sh
 pnpx wrangler secret put DATABASE_URL
+# when prompted, enter your Neon connection string
+```
+
+Then, create the KV binding on your account:
+
+```sh
+pnpx wrangler kv namespace create GOOSE_JOKES_CACHE
+```
+
+And set the ID of the KV binding in `wrangler.toml`
+
+```toml
+[[kv_namespaces]]
+binding = "GOOSE_JOKES_CACHE"
+id = "<result from previous command>"
 ```
 
 Then deploy:

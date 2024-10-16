@@ -6,13 +6,12 @@ import { Hono } from "hono";
 import { HomePage } from "./HomePage";
 import { generateGooseJoke } from "./ai";
 import { jokes } from "./db/schema";
-
-type Bindings = {
-  DATABASE_URL: string;
-  AI: Ai; // Cloudflare AI binding, enabled in wrangler.toml
-};
+import { gooseJokesRateLimiter } from "./rate-limiter";
+import type { Bindings } from "./types";
 
 const app = new Hono<{ Bindings: Bindings }>();
+
+app.use(gooseJokesRateLimiter);
 
 app.get("/", async (c) => {
   const sql = neon(c.env.DATABASE_URL);
