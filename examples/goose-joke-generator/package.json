@@ -11,10 +11,12 @@
     "fiberplane": "fpx"
   },
   "dependencies": {
+    "@hono-rate-limiter/cloudflare": "^0.2.1",
     "@neondatabase/serverless": "^0.9.3",
+    "dotenv": "^16.4.5",
     "drizzle-orm": "^0.31.2",
     "hono": "^4.5.0",
-    "dotenv": "^16.4.5"
+    "hono-rate-limiter": "^0.4.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240403.0",
