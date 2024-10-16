@@ -5,8 +5,8 @@ export const HomePage: FC<{ joke: string }> = ({ joke }) => {
     <html lang="en">
       <head>
         <title>Goose Joke Generator</title>
-        {/* biome-ignore lint/security/noDangerouslySetInnerHtml: we do not want quotes to be escaped */}
         <style
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: we do not want quotes to be escaped
           dangerouslySetInnerHTML={{
             __html: `
           body {
