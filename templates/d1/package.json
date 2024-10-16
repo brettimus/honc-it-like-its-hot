@@ -9,7 +9,8 @@
     "db:migrate:prod": "ENVIROMENT=production drizzle-kit migrate",
     "db:seed": "tsx seed.ts",
     "db:setup": "npm run db:touch && npm run db:generate && npm run db:migrate && npm run db:seed",
-    "fiberplane-studio": "fpx"
+    "db:studio": "drizzle-kit studio",
+    "fiberplane": "fpx"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
