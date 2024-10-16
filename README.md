@@ -1,6 +1,6 @@
 <div align="center">
   <h1>Honc Honc!</h1>
-  <img src="https://github.com/brettimus/honc-it-like-its-hot/blob/9290786147fe1efa2079899064853cf754f175e5/assets/honc.png" width="200" height="200" />
+  <img src="https://github.com/brettimus/honc-it-like-its-hot/blob/8f49e07f6161267c93711c48b8f9c40aa571fc83/assets/honc.png" width="200" height="200" />
 </div>
 
 <p align="center">
