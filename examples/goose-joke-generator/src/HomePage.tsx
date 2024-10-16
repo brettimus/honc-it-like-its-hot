@@ -6,20 +6,31 @@ export const HomePage: FC<{ joke: string }> = ({ joke }) => {
       <head>
         <title>Goose Joke Generator</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,400;0,700;1,700&display=swap"
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Comic+Sans+MS:wght@400;700&display=swap"
         />
         <style
           // biome-ignore lint/security/noDangerouslySetInnerHtml: we do not want quotes to be escaped
           dangerouslySetInnerHTML={{
             __html: `
           body {
-            font-family: "Comic Sans MS", "Comic Sans", "Comic Neue", serif;
+            font-family: "Comic Neue", "Comic Sans MS", "Comic Sans", serif;
             background-color: #ffffcc;
             color: #333;
             text-align: center;
             padding: 50px;
+          }
+          @media (max-width: 600px) {
+            body {
+              padding: 10px;
+            }
           }
           h1 {
             color: #ff6600;
