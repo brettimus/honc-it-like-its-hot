@@ -10,7 +10,7 @@ export const HomePage: FC<{ joke: string }> = ({ joke }) => {
           dangerouslySetInnerHTML={{
             __html: `
           body {
-            font-family: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
+            font-family: "Comic Sans MS", "Comic Sans", "Comic Neue", serif;
             background-color: #ffffcc;
             color: #333;
             text-align: center;
@@ -35,7 +35,7 @@ export const HomePage: FC<{ joke: string }> = ({ joke }) => {
             line-height: 1.4;
           }
           .refresh-btn {
-            font-family: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
+            font-family: "Comic Sans MS", "Comic Sans", "Comic Neue", serif;
             background-color: #ff6600;
             color: #fff;
             border: none;
