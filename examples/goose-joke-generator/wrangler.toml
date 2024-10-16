@@ -8,6 +8,12 @@ port = 7153
 # [vars]
 # MY_VAR = "my-variable"
 
+# Workers Logs
+# Docs: https://developers.cloudflare.com/workers/observability/logs/workers-logs/
+# Configuration: https://developers.cloudflare.com/workers/observability/logs/workers-logs/#enable-workers-logs
+[observability]
+enabled = true
+
 [[kv_namespaces]]
 binding = "GOOSE_JOKES_CACHE"
 id = "48bded0bf1b943c6bbb10f8ebd5fa554"
