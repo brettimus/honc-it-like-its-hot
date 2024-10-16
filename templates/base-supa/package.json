@@ -5,7 +5,8 @@
     "deploy": "wrangler deploy --minify src/index.ts",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "db:seed": "tsx seed.ts"
+    "db:seed": "tsx seed.ts",
+    "studio": "npx @fiberplane/studio@latest"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
@@ -15,6 +16,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240403.0",
+    "@fiberplane/hono-otel": "^0.3.1-beta.2",
     "drizzle-kit": "^0.22.6",
     "tsx": "^4.11.0",
     "wrangler": "^3.47.0"

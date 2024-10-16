@@ -18,12 +18,18 @@ HONC provides the tool to get running quickly, and this repo provides a collecti
 
 ## Templates
 
-These are accessible via the [Create HONC App](https://github.com/fiberplane/create-honc-app) CLI.
+Accessible via the [Create HONC App](https://github.com/fiberplane/create-honc-app) CLI.
 
 ## Examples
 
-These are example applications built with the HONC stack that you could deploy to Cloudflare.
+Example applications built with the HONC stack that you could deploy to Cloudflare. Each example's README will explain why it was set up that way, as well as giving instructions on how to deploy.
 
 ## Recipes
 
-These are recipes for common use cases for data apis.
+Recipes for common use cases for data apis, including:
+
+- [Authentication](./recipes/authentication)
+- [Rate Limiting](./recipes/rate-limiting)
+- [R2 Object Storage](./recipes/r2-object-storage)
+- [WebSockets with Durable Objects](./recipes/durable-objects)
+- [Scheduled Jobs](./recipes/scheduled-jobs)

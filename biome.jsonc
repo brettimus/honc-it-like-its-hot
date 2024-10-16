@@ -29,51 +29,7 @@
   },
   "overrides": [
     {
-      "include": ["packages/types/src/schemas.ts"],
-      "linter": {
-        "enabled": false
-      }
-    },
-    {
-      "include": ["www"],
-      "formatter": {
-        "enabled": false
-      }
-    },
-    {
-      "include": ["studio"],
-      "linter": {
-        "enabled": true,
-        "rules": {
-          "suspicious": {
-            "noArrayIndexKey": {
-              "level": "off"
-            }
-          }
-        }
-      }
-    },
-    {
-      "include": ["packages/client-library-otel"],
-      "linter": {
-        "enabled": true,
-        "rules": {
-          "recommended": true,
-          "style": {
-            "useBlockStatements": {
-              "level": "off"
-            }
-          }
-        }
-      }
-    },
-    {
-      "include": [
-        "packages/client-library-otel",
-        "api",
-        "cli",
-        "honc-supercharger"
-      ],
+      "include": ["examples", "templates", "recipes"],
       "linter": {
         "enabled": true,
         "rules": {
@@ -92,25 +48,13 @@
   ],
   "files": {
     "ignore": [
-      // API related
+      // Drizzle related
       "meta/*.json",
 
-      // Client library and website related
       "dist",
-      "www/",
-      ".astro",
 
       // ignore all tsconfig.json files
-      "tsconfig.json",
-
-      // ignore any test data files
-      "test-data/*.js"
-
-      // Rust code related
-      // This caused biome to ignore the entire fpx folder
-      // commenting out for now as we still want to find a way to
-      // skip Rust code in biome
-      // "fpx/*.*"
+      "tsconfig.json"
     ]
   }
 }
