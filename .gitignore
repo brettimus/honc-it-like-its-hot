@@ -1,0 +1,41 @@
+.wrangler
+shared/dist
+.env
+.envrc
+
+# Fpx
+.fpxconfig
+
+# Mac
+.DS_Store
+
+# VS Code
+.vscode
+*.code-workspace
+
+# CLion
+.idea
+
+# Package locks
+**/package-lock.json
+**/yarn.lock
+
+# TypeScript / Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+node_modules
+yarn-error.log
+
+# Build tools
+.parcel-cache*
+.nx/cache
+*.tsbuildinfo
+
+# Ignore .dev.vars files
+templates/**/*.dev.vars
+examples/**/*.dev.vars
+recipes/**/*.dev.vars

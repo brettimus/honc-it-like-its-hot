@@ -1,0 +1,25 @@
+{
+  "name": "honc-it-like-its-hot",
+  "version": "1.0.0",
+  "description": "collection of examples, templates, and recipes for the HONC stack",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "format": "biome check . --write",
+    "lint": "pnpm --recursive lint",
+    "typecheck": "pnpm --recursive typecheck"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brettimus/honc-it-like-its-hot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/brettimus/honc-it-like-its-hot/issues"
+  },
+  "homepage": "https://github.com/brettimus/honc-it-like-its-hot#readme",
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.3",
+    "rimraf": "^5.0.7",
+    "typescript": "^5.5.4",
+    "wrangler": "^3.73.0"
+  }
+}
