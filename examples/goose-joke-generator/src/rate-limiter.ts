@@ -15,7 +15,7 @@ export const gooseJokesRateLimiter = factory.createMiddleware(
   (c: Context, next: Next) =>
     rateLimiter({
       windowMs: 2 * 60 * 1000, // 2 minutes
-      limit: 200, // Limit each IP to 200 requests per `window` (here, per 2 minutes).
+      limit: 3000, // Limit each IP to 3000 requests per `window` (here, per 2 minutes).
       standardHeaders: "draft-6", // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
       keyGenerator: (c) => c.req.header("cf-connecting-ip") ?? "", // Method to generate custom identifiers for clients.
       store: new WorkersKVStore({

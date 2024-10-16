@@ -31,10 +31,12 @@ export async function generateGooseJoke(
 
     Here is a good example:
     
-    "Why did the goose cross the road? To prove he wasn't chicken!"
+    "Why did the goose cross the road? To prove he wasn't chicken! This is funny because geese are not chickens."
 
     Here are some recent jokes to avoid repeating:
     ${recentJokesContent}
+
+    ALWAYS EXPLAIN THE JOKE AFTERWARDS. That's what makes it funny.
   `.trim();
   const userPrompt = `
     Generate me a funny joke about a goose.
