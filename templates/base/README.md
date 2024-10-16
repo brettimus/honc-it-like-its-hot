@@ -26,9 +26,8 @@ Make sure you have Neon set up and configured with your database. Create a .dev.
 Run the migrations and (optionally) seed the database:
 
 ```sh
-npm run db:generate
-npm run db:migrate
-npm run db:seed # Optional
+# this is a convenience script that runs db:generate, db:migrate, and db:seed
+npm run db:setup
 ```
 
 Run the development server:
@@ -37,5 +36,13 @@ Run the development server:
 npm run dev
 ```
 
-Learn more about the HONC stack on the [website](https://honc.dev) or the main [repo](https://github.com/fiberplane/create-honc-app).
+### Developing
 
+When you iterate on the database schema, you'll need to generate a new migration and apply it:
+
+```sh
+npm run db:generate
+npm run db:migrate
+```
+
+Learn more about the HONC stack on the [website](https://honc.dev) or the main [repo](https://github.com/fiberplane/create-honc-app).
