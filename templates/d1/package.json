@@ -8,7 +8,8 @@
     "db:migrate": "wrangler d1 migrations apply d1-database --local",
     "db:migrate:prod": "ENVIROMENT=production drizzle-kit migrate",
     "db:seed": "tsx client.ts",
-    "studio": "npx @fiberplane/studio@latest"
+    "db:setup": "npm run db:touch && npm run db:generate && npm run db:migrate && npm run db:seed",
+    "fiberplane-studio": "fpx"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
@@ -18,6 +19,7 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240403.0",
     "@fiberplane/hono-otel": "^0.3.1-beta.2",
+    "@fiberplane/studio": "^0.8.4",
     "drizzle-kit": "^0.22.6",
     "tsx": "^4.11.0",
     "wrangler": "^3.47.0"
