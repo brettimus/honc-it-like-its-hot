@@ -5,7 +5,7 @@ compatibility_flags = [ "nodejs_compat" ]
 [[d1_databases]]
 binding = "DB"
 database_name = "honc-d1-database"
-database_id = ""
+database_id = "local-honc-d1-database"
 migrations_dir = "drizzle/migrations"
 
 
