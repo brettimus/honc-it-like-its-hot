@@ -47,7 +47,17 @@ Debug with Fiberplane:
 pnpm fiberplane
 ```
 
-Deploy with Cloudflare:
+### Deploying
+
+Deploy with Cloudflare Wrangler.
+
+First set the DATABASE_URL as a secret:
+
+```sh
+npx wrangler secret put DATABASE_URL
+```
+
+Then deploy:
 
 ```sh
 pnpm run deploy
