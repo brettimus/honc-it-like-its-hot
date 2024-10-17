@@ -12,7 +12,8 @@ import type { Bindings } from "./types";
 const app = new Hono<{ Bindings: Bindings }>();
 
 // Add a rate limiter to the api since we're handing out all that free AI
-app.use(gooseJokesRateLimiter);
+// NOTE - Commented out due to 500 errors, the Key Value store is complaining about expiry time of certain keys
+// app.use(gooseJokesRateLimiter);
 
 app.get("/", async (c) => {
   const sql = neon(c.env.DATABASE_URL);
