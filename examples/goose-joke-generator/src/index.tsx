@@ -6,7 +6,7 @@ import { Hono } from "hono";
 import { HomePage } from "./HomePage";
 import { generateGooseJoke } from "./ai";
 import { jokes } from "./db/schema";
-import { gooseJokesRateLimiter } from "./rate-limiter";
+// import { gooseJokesRateLimiter } from "./rate-limiter";
 import type { Bindings } from "./types";
 
 const app = new Hono<{ Bindings: Bindings }>();
