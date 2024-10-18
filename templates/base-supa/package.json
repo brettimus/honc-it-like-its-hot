@@ -18,8 +18,8 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240403.0",
-    "@fiberplane/hono-otel": "^0.3.1-beta.2",
-    "@fiberplane/studio": "^0.8.4",
+    "@fiberplane/hono-otel": "latest",
+    "@fiberplane/studio": "latest",
     "drizzle-kit": "^0.22.6",
     "tsx": "^4.11.0",
     "typescript": "^5.5.4",
