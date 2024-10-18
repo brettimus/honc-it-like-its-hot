@@ -2,6 +2,8 @@
 
 This is a project created with the `create-honc-app` template. 
 
+Learn more about the HONC stack on the [website](https://honc.dev) or the main [repo](https://github.com/fiberplane/create-honc-app).
+
 ### Getting started
 [D1](https://developers.cloudflare.com/d1/) is Cloudflare's serverless SQL database. Running HONC with a D1 database involves two key steps: first, setting up the project locally, and second, deploying it in production. You can spin up your D1 database locally using Wrangler. If you're planning to deploy your application for production use, ensure that you have created a D1 instance in your Cloudflare account.
 
@@ -73,7 +75,7 @@ CLOUDFLARE_ACCOUNT_ID="" # Find your Account id on the Workers & Pages overview 
 CLOUDFLARE_DATABASE_ID="" # Find the database ID under workers & pages under D1 SQL Database and by selecting the created database
 ```
 
-If you haven’t generated the migration files yet, run:
+If you haven’t generated the latest migration files yet, run:
 ```shell
 npm run db:generate
 ```
@@ -88,7 +90,4 @@ Finally deploy your worker
 npm run deploy
 ```
 
-You can now visit the worker’s address and access the API. If you wish, you can update the endpoint in the `client.ts` file to point to your deployed worker's address and run the script with `npm run client` to populate the D1 database in production.
-
-Learn more about the HONC stack on the [website](https://honc.dev) or the main [repo](https://github.com/fiberplane/create-honc-app).
 

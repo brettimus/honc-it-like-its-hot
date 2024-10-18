@@ -2,6 +2,8 @@
 
 This is a project created with the `create-honc-app` template.
 
+Learn more about the HONC stack on the [website](https://honc.dev) or the main [repo](https://github.com/fiberplane/create-honc-app).
+
 ### Getting started
 
 Make sure you have Neon set up and configured with your database. Create a .dev.vars file with the `DATABASE_URL` key and value (see: `.dev.vars.example`).
@@ -45,4 +47,16 @@ npm run db:generate
 npm run db:migrate
 ```
 
-Learn more about the HONC stack on the [website](https://honc.dev) or the main [repo](https://github.com/fiberplane/create-honc-app).
+### Deploying
+
+Set your `DATABASE_URL` secret (and any other secrets you need) with wrangler:
+
+```sh
+npx wrangler secret put DATABASE_URL
+```
+
+Deploy with wrangler:
+
+```sh
+npm run deploy
+```
